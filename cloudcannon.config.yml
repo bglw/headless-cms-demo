@@ -4,5 +4,8 @@ collections_config:
     output: true
     url: /previewer/ # Use the previewer page to preview all content files in-CMS
     new_preview_url: /previewer/ # Also use the previewer page to preview new, unsaved files
+    _enabled_editors:
+      - visual
+      - data
 
 output: content # Use the content folder as both the input and output directory of our build
