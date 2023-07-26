@@ -1,8 +1,7 @@
 collections_config:
   posts:
     path: content/posts
-    output: true
-    url: /previewer/?file=[slug] # Use the previewer page to preview all content files in-CMS
+    output: false
     new_preview_url: /previewer/ # Also use the previewer page to preview new, unsaved files
     _enabled_editors:
       - visual
