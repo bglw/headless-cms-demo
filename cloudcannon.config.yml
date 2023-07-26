@@ -1,0 +1,8 @@
+collections_config:
+  posts:
+    path: content/posts
+    output: true
+    url: /previewer/ # Use the previewer page to preview all content files in-CMS
+    new_preview_url: /previewer/ # Also use the previewer page to preview new, unsaved files
+
+output: content # Use the content folder as both the input and output directory of our build

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="site.css">
+    <title>CMS Preview Interface</title>
+</head>
+<body>
+    
+    <div id="preview_area">
+        <p>Loading preview content</p>
+    </div>
+
+    <script>
+        async function updatePreview(CloudCannon) {
+            const latestValue = await CloudCannon.value();
+
+            const el = document.querySelector("#preview_area");
+            // Intentionally-simple sample of getting content onto the page.
+            el.innerHTML = `
+                <h1>${latestValue.title}</h1>
+                <h2>Published on ${latestValue.date}</h2>
+
+                ${content_markdown}
+            `;
+        }
+
+        function onLiveEditorLoad(CloudCannon) {
+            CloudCannon.enableEvents();
+        }
+
+        if (!window.CloudCannon) {
+            document.addEventListener('cloudcannon:load', function (e) {
+                onLiveEditorLoad(e.detail.CloudCannon);
+            });
+        } else {
+            onLiveEditorLoad(window.CloudCannon);
+        }
+
+        document.addEventListener('cloudcannon:update', async function (e) {
+            updatePreview(e.detail.CloudCannon);
+        });
+    </script>
+</body>
+</html>
