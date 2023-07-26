@@ -28,6 +28,7 @@
 
         function onLiveEditorLoad(CloudCannon) {
             CloudCannon.enableEvents();
+            updatePreview(CloudCannon); // Render the preview once the page is ready
         }
 
         if (!window.CloudCannon) {
